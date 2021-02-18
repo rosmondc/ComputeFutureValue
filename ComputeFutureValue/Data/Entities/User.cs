@@ -1,4 +1,4 @@
-﻿namespace ComputeFutureValue.Data.Entities
+﻿namespace ComputeFutureValue.Api.Data.Entities
 {
     public class User
     {

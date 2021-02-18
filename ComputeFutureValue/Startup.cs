@@ -1,17 +1,13 @@
-using ComputeFutureValue.Services;
-using ComputeFutureValue.Services.Interfaces;
+using ComputeFutureValue.Api.Data;
+using ComputeFutureValue.Api.Infrastructure.Interfaces;
+using ComputeFutureValue.Api.Infrastructure.Services;
+using ComputeFutureValue.Api.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ComputeFutureValue
 {
@@ -27,7 +23,19 @@ namespace ComputeFutureValue
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IComputeService, ComputeService>();
+            services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
+            {
+                builder.WithOrigins(new string[] { "https://localhost:7001", "https://localhost:4200" }).AllowAnyMethod().AllowAnyHeader();
+            }));
+
+            services.AddDbContext<ComputeFutureValueDbContext>(cfg =>
+            {
+                cfg.UseSqlServer(Configuration.GetConnectionString("ApiConnectionString"));
+            });
+
+            services.AddTransient<IInvoiceService, InvoiceService>();
+
+            services.AddAutoMapperMappingConfiguration();
 
             services.AddControllers();
         }
@@ -39,6 +47,11 @@ namespace ComputeFutureValue
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

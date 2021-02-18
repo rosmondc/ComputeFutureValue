@@ -1,20 +1,20 @@
-﻿using ComputeFutureValue.Data;
+﻿using ComputeFutureValue.Api.Data;
+using ComputeFutureValue.Api.Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static ComputeFutureValue.Services.Interfaces.IGenericRepository;
 
-namespace ComputeFutureValue.Services.Repositories
+namespace ComputeFutureValue.Api.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly ComputeDbContext _context;
+        private readonly ComputeFutureValueDbContext _context;
         private readonly DbSet<T> _entity;
         private readonly ILogger<T> _logger;
 
-        public GenericRepository(ComputeDbContext context, ILogger<T> logger)
+        public GenericRepository(ComputeFutureValueDbContext context, ILogger<T> logger)
         {
             _context = context;
             _entity = context.Set<T>();
@@ -36,7 +36,7 @@ namespace ComputeFutureValue.Services.Repositories
 
                 throw new Exception(message);
             }
-
+            
         }
 
         public async Task<T> GetById(object id)

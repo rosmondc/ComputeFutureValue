@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputeFutureValue", "ComputeFutureValue\ComputeFutureValue.csproj", "{96CDD966-6BDE-4202-A837-D503B5BACD2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputeFutureValue.Api", "ComputeFutureValue\ComputeFutureValue.Api.csproj", "{96CDD966-6BDE-4202-A837-D503B5BACD2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
