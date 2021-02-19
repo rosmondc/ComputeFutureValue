@@ -5,9 +5,8 @@ namespace ComputeFutureValue.Api.Data
 {
     public class ComputeFutureValueDbContext : DbContext
     {
-        public ComputeFutureValueDbContext()
+        public ComputeFutureValueDbContext(DbContextOptions<ComputeFutureValueDbContext> options) : base(options)
         {
-
         }
 
         public DbSet<InvoiceHistory> Histories { get; set; }

@@ -1,5 +1,7 @@
 using ComputeFutureValue.Api.Data;
+using ComputeFutureValue.Api.Data.Entities;
 using ComputeFutureValue.Api.Infrastructure.Interfaces;
+using ComputeFutureValue.Api.Infrastructure.Repositories;
 using ComputeFutureValue.Api.Infrastructure.Services;
 using ComputeFutureValue.Api.Mapper;
 using Microsoft.AspNetCore.Builder;
@@ -33,7 +35,9 @@ namespace ComputeFutureValue
                 cfg.UseSqlServer(Configuration.GetConnectionString("ApiConnectionString"));
             });
 
-            services.AddTransient<IInvoiceService, InvoiceService>();
+            services.AddScoped<IInvoiceService, InvoiceService>();
+            services.AddScoped<IGenericRepository<InvoiceHistory>, GenericRepository<InvoiceHistory>>();
+
 
             services.AddAutoMapperMappingConfiguration();
 
@@ -41,7 +45,7 @@ namespace ComputeFutureValue
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ComputeFutureValueDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -63,6 +67,8 @@ namespace ComputeFutureValue
             {
                 endpoints.MapControllers();
             });
+
+            ComputeFutureValueApiSeeder.EnsureDataSeedAsync(env, context).Wait();
         }
     }
 }

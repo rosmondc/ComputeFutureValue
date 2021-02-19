@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ComputeFutureValue.Api.Data.Entities
 {
@@ -7,22 +8,23 @@ namespace ComputeFutureValue.Api.Data.Entities
         public int Id { get; set; }
 
 
-        [Required, Range(1, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
-        public int PresentValue { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
+        [Required, Column(TypeName = "decimal(18, 6)")]
+        public decimal PresentValue { get; set; }
 
-        [Required, Range(1, 99)]
+        [Required, Range(1, 99), Column(TypeName = "decimal(18, 6)")]
         public decimal LowerBoundInterestRate { get; set; }
 
-        [Required, Range(1, 99)]
+        [Required, Range(1, 99), Column(TypeName = "decimal(18, 6)")]
         public decimal UpperBoundInterestRate { get; set; }
 
-        [Required, Range(1, 99)]
+        [Required, Range(1, 99), Column(TypeName = "decimal(18, 6)")]
         public decimal IncrementaltRate { get; set; }
 
-        [Required, Range(1, 20)]
+        [Required, Range(1, 20), Column(TypeName = "int")]
         public int Maturity { get; set; }
 
-        [Required]
+        [Required, Column(TypeName = "decimal(18, 6)")]
         public decimal FutureValue { get; set; }
 
     }
