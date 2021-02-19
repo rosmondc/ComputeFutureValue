@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ComputerFutureValue.Razor
+namespace ComputeFutureValue.Razor
 {
     public class Program
     {

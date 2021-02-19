@@ -1,15 +1,16 @@
+using ComputeFutureValue.Razor.Services;
+using ComputeFutureValue.Razor.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Polly;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ComputerFutureValue.Razor
+namespace ComputeFutureValue.Razor
 {
     public class Startup
     {
@@ -24,6 +25,18 @@ namespace ComputerFutureValue.Razor
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddHttpClient<IInvoiceService, InvoiceService>(c =>
+            {
+                c.BaseAddress = new Uri(Configuration["ApiUrl"]);
+                c.DefaultRequestHeaders.Add("Accept", "application/json");
+                c.DefaultRequestHeaders.Add("User-Agent", "HttpClientFactory-Poc");
+            })
+                .AddTransientHttpErrorPolicy(policyBuilder =>
+                   policyBuilder.CircuitBreakerAsync(handledEventsAllowedBeforeBreaking: 2,
+                   durationOfBreak: TimeSpan.FromMilliseconds(300))).SetHandlerLifetime(TimeSpan.FromMinutes(5));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,7 +48,7 @@ namespace ComputerFutureValue.Razor
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Invoice/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -50,7 +63,7 @@ namespace ComputerFutureValue.Razor
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Invoice}/{action=Index}/{id?}");
             });
         }
     }

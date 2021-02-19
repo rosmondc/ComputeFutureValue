@@ -1,6 +1,6 @@
 using System;
 
-namespace ComputerFutureValue.Razor.Models
+namespace ComputeFutureValue.Razor.Models
 {
     public class ErrorViewModel
     {

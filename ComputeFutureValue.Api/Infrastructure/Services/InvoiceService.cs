@@ -4,6 +4,7 @@ using ComputeFutureValue.Common.Entities;
 using ComputeFutureValue.Common.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace ComputeFutureValue.Api.Infrastructure.Services
 {
@@ -49,7 +50,7 @@ namespace ComputeFutureValue.Api.Infrastructure.Services
 
         public async Task<IEnumerable<InvoiceViewModel>> GetAllHistory()
         {
-            return _mapper.Map<IEnumerable<InvoiceViewModel>>(await _repository.GetAll());
+            return _mapper.Map<IEnumerable<InvoiceViewModel>>(await _repository.GetAll()).OrderByDescending(x => x.Id);
         }
 
         public async Task<bool> SaveInvoiceComputation(InvoiceViewModel model)

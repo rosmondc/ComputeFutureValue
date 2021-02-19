@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputeFutureValue.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputeFutureValue.Common", "ComputeFutureValue.Common\ComputeFutureValue.Common.csproj", "{6CEDB390-A7C2-4BCB-A799-A1618C2AF307}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerFutureValue.Razor", "ComputerFutureValue.Razor\ComputerFutureValue.Razor.csproj", "{3FA6701D-1196-4AE8-A7B9-242083773CCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputeFutureValue.Razor", "ComputerFutureValue.Razor\ComputeFutureValue.Razor.csproj", "{3FA6701D-1196-4AE8-A7B9-242083773CCE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputeFutureValue.Api", "ComputeFutureValue.Api\ComputeFutureValue.Api.csproj", "{32486DFE-E84D-46BA-B2EE-1EFB5F260271}"
 EndProject

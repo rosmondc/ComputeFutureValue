@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ComputeFutureValue.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class InvoiceController : Controller
     {
         private readonly IInvoiceService _service;
