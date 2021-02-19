@@ -18,7 +18,7 @@ namespace ComputeFutureValue.Api.Infrastructure.Services
             _mapper = mapper;
         }
 
-        public decimal CalculateFutureAmount(InvoiceHistoryViewModel model)
+        public decimal CalculateFutureAmount(InvoiceViewModel model)
         {
             decimal futureValue = 0;
             decimal interestRate = 0;
@@ -47,12 +47,12 @@ namespace ComputeFutureValue.Api.Infrastructure.Services
             return (futureValue > 0) ? futureValue : 0;
         }
 
-        public async Task<IEnumerable<InvoiceHistoryViewModel>> GetAllHistory()
+        public async Task<IEnumerable<InvoiceViewModel>> GetAllHistory()
         {
-            return _mapper.Map<IEnumerable<InvoiceHistoryViewModel>>(await _repository.GetAll());
+            return _mapper.Map<IEnumerable<InvoiceViewModel>>(await _repository.GetAll());
         }
 
-        public async Task<bool> SaveComputation(InvoiceHistoryViewModel model)
+        public async Task<bool> SaveInvoiceComputation(InvoiceViewModel model)
         {
             var history = _mapper.Map<InvoiceHistory>(model);
             var result = await _repository.AddAsync(history);

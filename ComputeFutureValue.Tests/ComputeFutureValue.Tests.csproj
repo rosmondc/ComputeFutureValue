@@ -17,6 +17,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+	<PackageReference Include="Moq" Version="4.16.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ComputeFutureValue.Common\ComputeFutureValue.Common.csproj" />
+    <ProjectReference Include="..\ComputeFutureValue\ComputeFutureValue.Api.csproj" />
   </ItemGroup>
 
 </Project>

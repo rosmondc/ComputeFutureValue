@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ComputeFutureValue.Common.ViewModels
 {
-    public class InvoiceHistoryViewModel
+    public class InvoiceViewModel
     {
         
         [Required, Range(1, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]

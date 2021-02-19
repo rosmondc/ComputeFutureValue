@@ -24,7 +24,7 @@ namespace ComputeFutureValue.Api.Controllers
         }
 
         [HttpPost, Route("compute")]
-        public async Task<decimal> Compute(InvoiceHistoryViewModel model)
+        public async Task<decimal> Compute(InvoiceViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -32,7 +32,7 @@ namespace ComputeFutureValue.Api.Controllers
 
                 if (futureAmount > 0)
                 {
-                    var result = await _service.SaveComputation(model);
+                    var result = await _service.SaveInvoiceComputation(model);
                     if (result)
                         return futureAmount;
                 }

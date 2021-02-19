@@ -8,7 +8,7 @@ namespace ComputeFutureValue.Api.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<InvoiceHistory, InvoiceHistoryViewModel>().ReverseMap();
+            CreateMap<InvoiceHistory, InvoiceViewModel>().ReverseMap();
         }
     }
 }

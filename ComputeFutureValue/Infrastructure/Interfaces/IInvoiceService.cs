@@ -6,10 +6,10 @@ namespace ComputeFutureValue.Api.Infrastructure.Interfaces
 {
     public interface IInvoiceService
     {
-        decimal CalculateFutureAmount(InvoiceHistoryViewModel model);
+        decimal CalculateFutureAmount(InvoiceViewModel model);
 
-        Task<IEnumerable<InvoiceHistoryViewModel>> GetAllHistory();
+        Task<IEnumerable<InvoiceViewModel>> GetAllHistory();
 
-        Task<bool> SaveComputation(InvoiceHistoryViewModel model);
+        Task<bool> SaveInvoiceComputation(InvoiceViewModel model);
     }
 }
