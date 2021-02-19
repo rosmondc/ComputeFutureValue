@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using ComputeFutureValue.Api.Data.Entities;
 using ComputeFutureValue.Api.Infrastructure.Interfaces;
-using ComputeFutureValue.ViewModel;
+using ComputeFutureValue.Common.Entities;
+using ComputeFutureValue.Common.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -18,7 +18,7 @@ namespace ComputeFutureValue.Api.Infrastructure.Services
             _mapper = mapper;
         }
 
-        public async Task<decimal> CalculateFutureAmount(InvoiceHistoryViewModel model)
+        public decimal CalculateFutureAmount(InvoiceHistoryViewModel model)
         {
             decimal futureValue = 0;
             decimal interestRate = 0;
@@ -44,12 +44,7 @@ namespace ComputeFutureValue.Api.Infrastructure.Services
 
             model.FutureValue = futureValue;
 
-            var result = await SaveComputation(model);
-
-            if (result)
-                return futureValue;
-
-            return 0;
+            return (futureValue > 0) ? futureValue : 0;
         }
 
         public async Task<IEnumerable<InvoiceHistoryViewModel>> GetAllHistory()
@@ -57,15 +52,12 @@ namespace ComputeFutureValue.Api.Infrastructure.Services
             return _mapper.Map<IEnumerable<InvoiceHistoryViewModel>>(await _repository.GetAll());
         }
 
-        private async Task<bool> SaveComputation(InvoiceHistoryViewModel model)
+        public async Task<bool> SaveComputation(InvoiceHistoryViewModel model)
         {
             var history = _mapper.Map<InvoiceHistory>(model);
             var result = await _repository.AddAsync(history);
 
-            if (result != null)
-                return true;
-
-            return false;
+            return (result != null);
         }
     }
 

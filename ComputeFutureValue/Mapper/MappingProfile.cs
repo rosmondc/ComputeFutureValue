@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using ComputeFutureValue.Api.Data.Entities;
-using ComputeFutureValue.ViewModel;
+using ComputeFutureValue.Common.Entities;
+using ComputeFutureValue.Common.ViewModels;
 
 namespace ComputeFutureValue.Api.Mapper
 {

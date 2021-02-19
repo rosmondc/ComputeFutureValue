@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ComputeFutureValue.Api.Data.Entities
+namespace ComputeFutureValue.Common.Entities
 {
     public class InvoiceHistory
     {

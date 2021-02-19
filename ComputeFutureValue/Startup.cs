@@ -1,9 +1,9 @@
 using ComputeFutureValue.Api.Data;
-using ComputeFutureValue.Api.Data.Entities;
 using ComputeFutureValue.Api.Infrastructure.Interfaces;
 using ComputeFutureValue.Api.Infrastructure.Repositories;
 using ComputeFutureValue.Api.Infrastructure.Services;
 using ComputeFutureValue.Api.Mapper;
+using ComputeFutureValue.Common.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -68,7 +68,7 @@ namespace ComputeFutureValue
                 endpoints.MapControllers();
             });
 
-            ComputeFutureValueApiSeeder.EnsureDataSeedAsync(env, context).Wait();
+            ComputeFutureValueApiSeeder.EnsureDataSeedAsync(context).Wait();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using ComputeFutureValue.Api.Infrastructure.Interfaces;
-using ComputeFutureValue.ViewModel;
+using ComputeFutureValue.Common.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -27,8 +27,16 @@ namespace ComputeFutureValue.Api.Controllers
         public async Task<decimal> Compute(InvoiceHistoryViewModel model)
         {
             if (ModelState.IsValid)
-                return await _service.CalculateFutureAmount(model);
+            {
+                var futureAmount = _service.CalculateFutureAmount(model);
 
+                if (futureAmount > 0)
+                {
+                    var result = await _service.SaveComputation(model);
+                    if (result)
+                        return futureAmount;
+                }
+            }
             return 0;
         }
 

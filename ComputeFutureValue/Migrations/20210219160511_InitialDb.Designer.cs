@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ComputeFutureValue.Api.Migrations
 {
     [DbContext(typeof(ComputeFutureValueDbContext))]
-    [Migration("20210219151308_InitialDb")]
+    [Migration("20210219160511_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace ComputeFutureValue.Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("ComputeFutureValue.Api.Data.Entities.InvoiceHistory", b =>
+            modelBuilder.Entity("ComputeFutureValue.Common.Entities.InvoiceHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace ComputeFutureValue.Api.Migrations
                     b.ToTable("Histories");
                 });
 
-            modelBuilder.Entity("ComputeFutureValue.Api.Data.Entities.User", b =>
+            modelBuilder.Entity("ComputeFutureValue.Common.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,6 +62,7 @@ namespace ComputeFutureValue.Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -71,9 +72,9 @@ namespace ComputeFutureValue.Api.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ComputeFutureValue.Api.Data.Entities.User", b =>
+            modelBuilder.Entity("ComputeFutureValue.Common.Entities.User", b =>
                 {
-                    b.HasOne("ComputeFutureValue.Api.Data.Entities.InvoiceHistory", "InvoiceHistory")
+                    b.HasOne("ComputeFutureValue.Common.Entities.InvoiceHistory", "InvoiceHistory")
                         .WithMany()
                         .HasForeignKey("InvoiceHistoryId");
 

@@ -1,7 +1,7 @@
-﻿using ComputeFutureValue.Api.Data.Entities;
+﻿using ComputeFutureValue.Common.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace ComputeFutureValue.ViewModel
+namespace ComputeFutureValue.Common.ViewModels
 {
     public class InvoiceHistoryViewModel
     {

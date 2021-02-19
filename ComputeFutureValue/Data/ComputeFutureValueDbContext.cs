@@ -1,4 +1,4 @@
-﻿using ComputeFutureValue.Api.Data.Entities;
+﻿using ComputeFutureValue.Common.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ComputeFutureValue.Api.Data
