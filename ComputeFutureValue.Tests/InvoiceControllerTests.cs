@@ -1,7 +1,9 @@
 ﻿using ComputeFutureValue.Api.Controllers;
 using ComputeFutureValue.Api.Infrastructure.Interfaces;
 using ComputeFutureValue.Common.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
+using System.Collections.Generic;
 using Xunit;
 
 namespace ComputeFutureValue.Tests
@@ -94,6 +96,47 @@ namespace ComputeFutureValue.Tests
 
             //Assert
             Assert.True(result == 0);
+        }
+
+        [Fact]
+        public void InvoiceController_Return_All_Product()
+        {
+            // Arrange
+            var invoiceViewModels = new List<InvoiceViewModel>()
+            {
+                new InvoiceViewModel() {
+                    PresentValue = It.IsAny<decimal>(),
+                    LowerBoundInterestRate = It.IsAny<decimal>(),
+                    UpperBoundInterestRate = It.IsAny<decimal>(),
+                    Maturity = It.IsAny<int>(),
+                    IncrementaltRate = It.IsAny<decimal>(),
+                }
+            };
+
+            _mockService.Setup(s => s.GetAllHistory()).ReturnsAsync(invoiceViewModels);
+            var controller = new InvoiceController(_mockService.Object);
+
+            // Act
+            var results = controller.Index().Result;
+
+            //Assert
+            Assert.IsType<OkObjectResult>(results);
+        }
+
+        [Fact]
+        public void InvoiceController_Return_No_Product()
+        {
+            // Arrange
+            var invoiceViewModels = new List<InvoiceViewModel>();
+
+            _mockService.Setup(s => s.GetAllHistory()).ReturnsAsync(invoiceViewModels);
+            var controller = new InvoiceController(_mockService.Object);
+
+            // Act
+            var results = controller.Index().Result;
+
+            //Assert
+            Assert.IsType<NotFoundResult>(results);
         }
     }
 }

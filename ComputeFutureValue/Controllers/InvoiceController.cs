@@ -1,6 +1,7 @@
 ﻿using ComputeFutureValue.Api.Infrastructure.Interfaces;
 using ComputeFutureValue.Common.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ComputeFutureValue.Api.Controllers
@@ -20,7 +21,11 @@ namespace ComputeFutureValue.Api.Controllers
         [HttpGet, Route("")]
         public async Task<IActionResult> Index()
         {
-            return Ok(await _service.GetAllHistory());
+            var results = await _service.GetAllHistory();
+            if (results.Count() > 0)
+                return Ok(results);
+            else
+                return NotFound();
         }
 
         [HttpPost, Route("compute")]
