@@ -10,7 +10,7 @@ namespace ComputeFutureValue.Common.ViewModels
 
         [Required, Range(1, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
         [Display(Name = "Present Value")]
-        [DisplayFormat(DataFormatString = "{0:N0}")]
+        [DisplayFormat(DataFormatString = "{0:#.####}")]
         public decimal PresentValue { get; set; }
 
         [Required, Range(1, 99, ErrorMessage = "Please enter valid integer Number")]
@@ -31,7 +31,7 @@ namespace ComputeFutureValue.Common.ViewModels
         public int Maturity { get; set; }
 
         [Display(Name = "Future Value")]
-        [DisplayFormat(DataFormatString = "{0:N0}")]
+        [DisplayFormat(DataFormatString = "{0:#.####}")]
         public decimal FutureValue { get; set; }
 
         [StringLength(20, ErrorMessage = "User name should not excedd to 20 characters")]

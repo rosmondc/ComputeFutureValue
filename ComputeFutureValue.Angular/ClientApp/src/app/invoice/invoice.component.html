@@ -1,0 +1,36 @@
+<h1>Invoices</h1>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 16%">Present Value</th>
+        <th style="width: 16%">Lower Interest Rate</th>
+        <th style="width: 16%">Upper Interest Rate</th>
+        <th style="width: 16%">Increment Rate</th>
+        <th style="width: 16%">Maturity</th>
+        <th style="width: 16%">Future Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of invoices">
+        <td>{{ invoice.presentValue }}</td>
+        <td>{{ invoice.lowerBoundInterestRate }}</td>
+        <td>{{ invoice.upperBoundInterestRate }}</td>
+        <td>{{ invoice.incrementaltRate }}</td>
+        <td>{{ invoice.maturity }}</td>
+        <td>{{ invoice.futureValue }}</td>
+      </tr>
+      <tr *ngIf="!invoices">
+        <td colspan="4" class="text-center">
+          <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!--<div class="card-footer pb-0 pt-3">
+    <jw-pagination [items]="invoices" (changePage)="onChangePage($event)"></jw-pagination>
+  </div>-->
+
+  <div>This is a test {{ stringValue }}</div>
+</div>
+
