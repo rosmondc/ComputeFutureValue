@@ -17,9 +17,16 @@ namespace ComputeFutureValue.Razor.Controllers
             _service = service;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            var results = await _service.GetInvoicesAsync();
+            ViewData["presentValueSortParm"] = sortOrder == "presentValue" ? "presentValue_desc" : "presentValue";
+            ViewData["lowerBoundInterestRateSortParm"] = sortOrder == "lowerBoundInterestRate" ? "lowerBoundInterestRate_desc" : "lowerBoundInterestRate";
+            ViewData["upperBoundInterestRateSortParm"] = sortOrder == "upperBoundInterestRate" ? "upperBoundInterestRat_desc" : "upperBoundInterestRat";
+            ViewData["incrementalSortParm"] = sortOrder == "incremental" ? "incremental_desc" : "incremental";
+            ViewData["maturitySortParm"] = sortOrder == "maturity" ? "maturity_desc" : "maturity";
+            ViewData["futureSortParm"] = sortOrder == "future" ? "future_desc" : "future";
+
+            var results = await _service.GetInvoicesAsync(sortOrder);
 
             if (results != null)
                 return View(results);

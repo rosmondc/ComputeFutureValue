@@ -19,7 +19,6 @@
     },
     "ComputeFutureValue": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "Invoice",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

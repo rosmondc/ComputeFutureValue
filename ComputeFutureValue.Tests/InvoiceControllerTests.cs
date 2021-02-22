@@ -113,11 +113,11 @@ namespace ComputeFutureValue.Tests
                 }
             };
 
-            _mockService.Setup(s => s.GetAllHistory()).ReturnsAsync(invoiceViewModels);
+            _mockService.Setup(s => s.GetAllHistory(null)).ReturnsAsync(invoiceViewModels);
             var controller = new InvoiceController(_mockService.Object);
 
             // Act
-            var results = controller.Index().Result;
+            var results = controller.Index(null).Result;
 
             //Assert
             Assert.IsType<OkObjectResult>(results);
@@ -129,11 +129,11 @@ namespace ComputeFutureValue.Tests
             // Arrange
             var invoiceViewModels = new List<InvoiceViewModel>();
 
-            _mockService.Setup(s => s.GetAllHistory()).ReturnsAsync(invoiceViewModels);
+            _mockService.Setup(s => s.GetAllHistory(null)).ReturnsAsync(invoiceViewModels);
             var controller = new InvoiceController(_mockService.Object);
 
             // Act
-            var results = controller.Index().Result;
+            var results = controller.Index(null).Result;
 
             //Assert
             Assert.IsType<NotFoundResult>(results);

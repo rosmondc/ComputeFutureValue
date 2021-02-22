@@ -8,7 +8,7 @@ namespace ComputeFutureValue.Api.Infrastructure.Interfaces
     {
         decimal CalculateFutureAmount(InvoiceViewModel model);
 
-        Task<IEnumerable<InvoiceViewModel>> GetAllHistory();
+        Task<IEnumerable<InvoiceViewModel>> GetAllHistory(string sortOrder);
 
         Task<bool> SaveInvoiceComputation(InvoiceViewModel model);
     }

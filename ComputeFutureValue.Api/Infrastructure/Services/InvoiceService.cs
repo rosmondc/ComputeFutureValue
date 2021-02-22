@@ -48,9 +48,38 @@ namespace ComputeFutureValue.Api.Infrastructure.Services
             return (futureValue > 0) ? futureValue : 0;
         }
 
-        public async Task<IEnumerable<InvoiceViewModel>> GetAllHistory()
+        public async Task<IEnumerable<InvoiceViewModel>> GetAllHistory(string sortOrder)
         {
-            return _mapper.Map<IEnumerable<InvoiceViewModel>>(await _repository.GetAll()).OrderByDescending(x => x.Id);
+            var results = await _repository.GetAll();
+
+            if (sortOrder == "presentValue")
+                results = results.OrderBy(x => x.PresentValue).ToList();
+            else if (sortOrder == "presentValue_desc")
+                results = results.OrderByDescending(x => x.PresentValue).ToList();
+            else if (sortOrder == "lowerBoundInterestRate")
+                results = results.OrderBy(x => x.LowerBoundInterestRate).ToList();
+            else if (sortOrder == "lowerBoundInterestRate_desc")
+                results = results.OrderByDescending(x => x.LowerBoundInterestRate).ToList();
+            else if (sortOrder == "upperBoundInterestRate")
+                results = results.OrderBy(x => x.UpperBoundInterestRate).ToList();
+            else if (sortOrder == "upperBoundInterestRate_desc")
+                results = results.OrderByDescending(x => x.UpperBoundInterestRate).ToList();
+            else if (sortOrder == "incremental")
+                results = results.OrderBy(x => x.IncrementaltRate).ToList();
+            else if (sortOrder == "incremental_desc")
+                results = results.OrderByDescending(x => x.IncrementaltRate).ToList();
+            else if (sortOrder == "maturity")
+                results = results.OrderBy(x => x.Maturity).ToList();
+            else if (sortOrder == "maturity_desc")
+                results = results.OrderByDescending(x => x.Maturity).ToList();
+            else if (sortOrder == "future")
+                results = results.OrderBy(x => x.FutureValue).ToList();
+            else if (sortOrder == "future_desc")
+                results = results.OrderByDescending(x => x.FutureValue).ToList();
+            else
+                results = results.OrderByDescending(x => x.Id).ToList();
+
+            return _mapper.Map<IEnumerable<InvoiceViewModel>>(results);
         }
 
         public async Task<bool> SaveInvoiceComputation(InvoiceViewModel model)

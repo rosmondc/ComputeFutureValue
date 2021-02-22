@@ -5,7 +5,7 @@
 
 <table class="table">
     <thead>
-        <tr>
+        <tr class="numeric-alignment">
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["presentValueSortParm"]">@Html.DisplayNameFor(model => model.PresentValue)</a>
             </th>
@@ -29,7 +29,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
+        <tr class="numeric-alignment">
             <td>
                 @Html.DisplayFor(modelItem => item.PresentValue)
             </td>

@@ -6,7 +6,7 @@ namespace ComputeFutureValue.Razor.Services.Interfaces
 {
     public interface IInvoiceService
     {
-        Task<List<InvoiceViewModel>> GetInvoicesAsync();
+        Task<List<InvoiceViewModel>> GetInvoicesAsync(string sortOrder);
         Task<string> ComputeInvoiceAsync(InvoiceViewModel model);
     }
 }

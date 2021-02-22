@@ -18,9 +18,9 @@ namespace ComputeFutureValue.Razor.Services
             _httpClient = httpClient;
         }
 
-        public async Task<List<InvoiceViewModel>> GetInvoicesAsync()
+        public async Task<List<InvoiceViewModel>> GetInvoicesAsync(string sortOrder)
         {
-            var response = await _httpClient.GetAsync($"api/invoice");
+            var response = await _httpClient.GetAsync($"api/invoice?sortOrder={sortOrder}");
             var results = response.Content.ReadAsStringAsync().Result;
 
             if (response.IsSuccessStatusCode)
