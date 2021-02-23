@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ComputeFutureValue.Api.Migrations
 {
     [DbContext(typeof(ComputeFutureValueDbContext))]
-    [Migration("20210219160511_InitialDb")]
+    [Migration("20210223134021_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace ComputeFutureValue.Api.Migrations
                     b.Property<decimal>("FutureValue")
                         .HasColumnType("decimal(18,6)");
 
-                    b.Property<decimal>("IncrementaltRate")
+                    b.Property<decimal>("IncrementalRate")
                         .HasColumnType("decimal(18,6)");
 
                     b.Property<decimal>("LowerBoundInterestRate")

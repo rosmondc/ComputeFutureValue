@@ -19,7 +19,7 @@ namespace ComputeFutureValue.Common.Entities
         public decimal UpperBoundInterestRate { get; set; }
 
         [Required, Range(1, 99), Column(TypeName = "decimal(18, 6)")]
-        public decimal IncrementaltRate { get; set; }
+        public decimal IncrementalRate { get; set; }
 
         [Required, Range(1, 20), Column(TypeName = "int")]
         public int Maturity { get; set; }

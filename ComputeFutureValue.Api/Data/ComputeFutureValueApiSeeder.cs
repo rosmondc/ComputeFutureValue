@@ -20,7 +20,7 @@ namespace ComputeFutureValue.Api.Data
                         PresentValue = 1000, 
                         LowerBoundInterestRate = 10M, 
                         UpperBoundInterestRate = 50M, 
-                        IncrementaltRate = 20M, 
+                        IncrementalRate = 20M, 
                         Maturity = 4, 
                         FutureValue = 3217.5M  }
                 };

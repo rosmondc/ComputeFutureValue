@@ -15,7 +15,7 @@ namespace ComputeFutureValue.Api.Migrations
                     PresentValue = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
                     LowerBoundInterestRate = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
                     UpperBoundInterestRate = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
-                    IncrementaltRate = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
+                    IncrementalRate = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
                     Maturity = table.Column<int>(type: "int", nullable: false),
                     FutureValue = table.Column<decimal>(type: "decimal(18,6)", nullable: false)
                 },

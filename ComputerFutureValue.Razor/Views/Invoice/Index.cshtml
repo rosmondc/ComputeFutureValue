@@ -16,7 +16,7 @@
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["upperBoundInterestRateSortParm"]">@Html.DisplayNameFor(model => model.UpperBoundInterestRate)</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["incrementalSortParm"]">@Html.DisplayNameFor(model => model.IncrementaltRate)</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["incrementalSortParm"]">@Html.DisplayNameFor(model => model.IncrementalRate)</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["maturitySortParm"]">@Html.DisplayNameFor(model => model.Maturity)</a>
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.UpperBoundInterestRate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IncrementaltRate)
+                @Html.DisplayFor(modelItem => item.IncrementalRate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Maturity)

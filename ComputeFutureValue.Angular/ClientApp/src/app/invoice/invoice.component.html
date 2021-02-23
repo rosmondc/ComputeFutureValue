@@ -1,36 +1,72 @@
 <h1>Invoices</h1>
 <div>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th style="width: 16%">Present Value</th>
-        <th style="width: 16%">Lower Interest Rate</th>
-        <th style="width: 16%">Upper Interest Rate</th>
-        <th style="width: 16%">Increment Rate</th>
-        <th style="width: 16%">Maturity</th>
-        <th style="width: 16%">Future Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let invoice of invoices">
-        <td>{{ invoice.presentValue }}</td>
-        <td>{{ invoice.lowerBoundInterestRate }}</td>
-        <td>{{ invoice.upperBoundInterestRate }}</td>
-        <td>{{ invoice.incrementaltRate }}</td>
-        <td>{{ invoice.maturity }}</td>
-        <td>{{ invoice.futureValue }}</td>
-      </tr>
-      <tr *ngIf="!invoices">
-        <td colspan="4" class="text-center">
-          <span class="spinner-border spinner-border-lg align-center"></span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <!--<div class="card-footer pb-0 pt-3">
-    <jw-pagination [items]="invoices" (changePage)="onChangePage($event)"></jw-pagination>
-  </div>-->
 
-  <div>This is a test {{ stringValue }}</div>
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+<ng-container matColumnDef="presentValue">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Present Value</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.presentValue}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lowerBoundInterestRate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lower Interest Rate </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.lowerBoundInterestRate}} </mat-cell>
+    </ng-container>
+    s
+    <ng-container matColumnDef="upperBoundInterestRate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Upper Interest Rate </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.upperBoundInterestRate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="incrementalRate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Increment Rate </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.incrementalRate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="maturity">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Maturity </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.maturity}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="futureValue">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Future Value </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.futureValue}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
 
+
+<!--<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>-->
+
+    <!-- Position Column -->
+    <!--<ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>-->
+
+    <!-- Name Column -->
+    <!--<ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>-->
+
+    <!-- Weight Column -->
+    <!--<ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Weight </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    </ng-container>-->
+
+    <!-- Symbol Column -->
+    <!--<ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>-->

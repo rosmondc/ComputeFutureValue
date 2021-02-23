@@ -10,7 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -26,12 +30,15 @@ import { InvoiceComponent } from './invoice/invoice.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    MatTableModule,
+    MatSortModule,
     RouterModule.forRoot([
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'counter', component: CounterComponent },
     { path: 'fetch-data', component: FetchDataComponent },
     { path: 'invoice-list', component: InvoiceComponent, pathMatch: 'full' }
-], { relativeLinkResolution: 'legacy' })
+], { relativeLinkResolution: 'legacy' }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

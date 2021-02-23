@@ -3,7 +3,7 @@ export class InvoiceHistory {
   presentValue: number;
   lowerBoundInterestRate: number;
   upperBoundInterestRate: number;
-  incrementaltRate: number;
+  IncrementalRate: number;
   maturity: number;
   futureValue: number;
 }

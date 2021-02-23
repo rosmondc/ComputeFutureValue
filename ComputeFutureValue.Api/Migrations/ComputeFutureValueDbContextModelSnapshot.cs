@@ -29,7 +29,7 @@ namespace ComputeFutureValue.Api.Migrations
                     b.Property<decimal>("FutureValue")
                         .HasColumnType("decimal(18,6)");
 
-                    b.Property<decimal>("IncrementaltRate")
+                    b.Property<decimal>("IncrementalRate")
                         .HasColumnType("decimal(18,6)");
 
                     b.Property<decimal>("LowerBoundInterestRate")

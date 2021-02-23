@@ -28,7 +28,7 @@ namespace ComputeFutureValue.Tests
                 LowerBoundInterestRate = 10M,
                 UpperBoundInterestRate = 50M,
                 Maturity = 4,
-                IncrementaltRate = 20,
+                IncrementalRate = 20,
                 FutureValue = futureValue
             };
 
@@ -55,7 +55,7 @@ namespace ComputeFutureValue.Tests
                 LowerBoundInterestRate = It.IsAny<decimal>(),
                 UpperBoundInterestRate = It.IsAny<decimal>(),
                 Maturity = It.IsAny<int>(),
-                IncrementaltRate = It.IsAny<decimal>(),
+                IncrementalRate = It.IsAny<decimal>(),
                 FutureValue = It.IsAny<decimal>()
             };
 
@@ -82,7 +82,7 @@ namespace ComputeFutureValue.Tests
                 LowerBoundInterestRate = It.IsAny<decimal>(),
                 UpperBoundInterestRate = It.IsAny<decimal>(),
                 Maturity = It.IsAny<int>(),
-                IncrementaltRate = It.IsAny<decimal>(),
+                IncrementalRate = It.IsAny<decimal>(),
                 FutureValue = futureValue
             };
 
@@ -109,7 +109,7 @@ namespace ComputeFutureValue.Tests
                     LowerBoundInterestRate = It.IsAny<decimal>(),
                     UpperBoundInterestRate = It.IsAny<decimal>(),
                     Maturity = It.IsAny<int>(),
-                    IncrementaltRate = It.IsAny<decimal>(),
+                    IncrementalRate = It.IsAny<decimal>(),
                 }
             };
 

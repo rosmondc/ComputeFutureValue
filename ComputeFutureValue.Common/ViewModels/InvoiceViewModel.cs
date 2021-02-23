@@ -24,7 +24,7 @@ namespace ComputeFutureValue.Common.ViewModels
 
         [Required, Range(1, 99, ErrorMessage = "Please enter valid integer Number")]
         [Display(Name = "Increment Rate")]
-        public decimal IncrementaltRate { get; set; }
+        public decimal IncrementalRate { get; set; }
 
         [Required, Range(1, 20, ErrorMessage = "Please enter valid integer Number")]
         [Display(Name = "Maturity")]

@@ -34,10 +34,10 @@ namespace ComputeFutureValue.Api.Infrastructure.Services
                 else
                 {
                     runningTotal = futureValue;
-                    interestRate += model.IncrementaltRate;
+                    interestRate += model.IncrementalRate;
 
                     if (interestRate > model.UpperBoundInterestRate)
-                        interestRate -= model.IncrementaltRate;
+                        interestRate -= model.IncrementalRate;
                 }
 
                 futureValue = (runningTotal * (interestRate / 100)) + runningTotal;
@@ -65,9 +65,9 @@ namespace ComputeFutureValue.Api.Infrastructure.Services
             else if (sortOrder == "upperBoundInterestRate_desc")
                 results = results.OrderByDescending(x => x.UpperBoundInterestRate).ToList();
             else if (sortOrder == "incremental")
-                results = results.OrderBy(x => x.IncrementaltRate).ToList();
+                results = results.OrderBy(x => x.IncrementalRate).ToList();
             else if (sortOrder == "incremental_desc")
-                results = results.OrderByDescending(x => x.IncrementaltRate).ToList();
+                results = results.OrderByDescending(x => x.IncrementalRate).ToList();
             else if (sortOrder == "maturity")
                 results = results.OrderBy(x => x.Maturity).ToList();
             else if (sortOrder == "maturity_desc")
