@@ -1,0 +1,55 @@
+<div class="card">
+  <h4 class="card-header">Compute</h4>
+  <div class="card-body">
+    <form [formGroup]="invoiceForm" (ngSubmit)="onComputeFutureValue()">
+
+      <div class="form-group">
+        <label for="presentValue">Present Value</label>
+        <input type="text" formControlName="presentValue" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.presentValue.errors }" />
+        <div *ngIf="submitted && f.presentValue.errors" class="invalid-feedback">
+          <div *ngIf="f.presentValue.errors.required">Present Value is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lowerBoundInterestRate">Lower Bound Interest Rate</label>
+        <input type="text" formControlName="lowerBoundInterestRate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lowerBoundInterestRate.errors }" />
+        <div *ngIf="lowerBoundInterestRate && f.lowerBoundInterestRate.errors" class="invalid-feedback">
+          <div *ngIf="f.lowerBoundInterestRate.errors.required">Lower Bound Interest Rate is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="upperBoundInterestRate">Upper Bound Interest Rate</label>
+        <input type="text" formControlName="upperBoundInterestRate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.upperBoundInterestRate.errors }" />
+        <div *ngIf="submitted && f.upperBoundInterestRate.errors" class="invalid-feedback">
+          <div *ngIf="f.upperBoundInterestRate.errors.required">Upper Bound Interest Rate is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="incrementalRate">Incremental Rate</label>
+        <input type="text" formControlName="incrementalRate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.incrementalRate.errors }" />
+        <div *ngIf="submitted && f.incrementalRate.errors" class="invalid-feedback">
+          <div *ngIf="f.incrementalRate.errors.required">Incremental Rate is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="maturity">Maturity</label>
+        <input type="text" formControlName="maturity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.maturity.errors }" />
+        <div *ngIf="submitted && f.maturity.errors" class="invalid-feedback">
+          <div *ngIf="f.maturity.errors.required">Maturity is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Compute
+        </button>
+        <a (click)="cancelComputation()" class="btn btn-link">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

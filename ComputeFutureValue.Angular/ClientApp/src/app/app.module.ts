@@ -1,30 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { ComputeComponent } from './compute/compute.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
-    InvoiceComponent
+    NavMenuComponent,    
+    InvoiceComponent,
+    ComputeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,11 +28,11 @@ import { MatSortModule } from '@angular/material/sort';
     FormsModule,
     MatTableModule,
     MatSortModule,
-    RouterModule.forRoot([
-    { path: '', component: HomeComponent, pathMatch: 'full' },
-    { path: 'counter', component: CounterComponent },
-    { path: 'fetch-data', component: FetchDataComponent },
-    { path: 'invoice-list', component: InvoiceComponent, pathMatch: 'full' }
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([    
+      { path: '', component: InvoiceComponent, pathMatch: 'full' },
+      { path: 'compute', component: ComputeComponent },
 ], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule
   ],

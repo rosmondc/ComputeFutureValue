@@ -1,9 +1,8 @@
-export class InvoiceHistory {
-  id: number;
+export class Invoice {
   presentValue: number;
   lowerBoundInterestRate: number;
   upperBoundInterestRate: number;
-  IncrementalRate: number;
+  incrementalRate: number;
   maturity: number;
   futureValue: number;
 }

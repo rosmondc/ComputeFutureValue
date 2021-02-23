@@ -1,7 +1,7 @@
-import { InvoiceHistory } from './invoice-history';
+import { Invoice } from './invoice-history';
 
 describe('InvoiceHistory', () => {
   it('should create an instance', () => {
-    expect(new InvoiceHistory()).toBeTruthy();
+    expect(new Invoice()).toBeTruthy();
   });
 });

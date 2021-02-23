@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceDataService } from '../services/invoice-data.service';
-import { InvoiceHistory } from '../view-models/invoice-history';
+import { Invoice } from '../view-models/invoice-history';
 
 @Component({
   selector: 'app-invoice',
@@ -16,15 +16,12 @@ export class InvoiceComponent implements OnInit {
   invoices = [];
   stringValue: string;
   displayedColumns = ['presentValue', 'lowerBoundInterestRate', 'upperBoundInterestRate', 'incrementalRate', 'maturity', 'futureValue'];
-  dataSource: MatTableDataSource<InvoiceHistory>; 
+  dataSource: MatTableDataSource<Invoice>; 
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-
-  constructor(private invoiceService: InvoiceDataService, private route: ActivatedRoute,
-    private router: Router ) { }
-
+  constructor(private invoiceService: InvoiceDataService) { }
 
   ngOnInit() {
     this.invoiceService.getInvoices("").subscribe(_invoices => {

@@ -17,3 +17,16 @@ code {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/*.mat-header-cell {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mat-cell_1 {
+  text-align: right;
+  justify-content: right;
+}*/
+
+
