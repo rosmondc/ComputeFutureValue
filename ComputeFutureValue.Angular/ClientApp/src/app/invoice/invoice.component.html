@@ -1,21 +1,22 @@
 <h1>Invoices</h1>
-<div>
+
+<div class="invoice-container mat-elevation-z8">
 
   <mat-table #table [dataSource]="dataSource" matSort>
 
-<ng-container matColumnDef="presentValue">
+    <ng-container matColumnDef="presentValue">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Present Value</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.presentValue | number : '1.2-2'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lowerBoundInterestRate">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Lower Interest Rate </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.lowerBoundInterestRate | number : '1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.lowerBoundInterestRate | number : '1.2-2'}}% </mat-cell>
     </ng-container>
-    
+
     <ng-container matColumnDef="upperBoundInterestRate">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Upper Interest Rate </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.upperBoundInterestRate | number : '1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.upperBoundInterestRate | number : '1.2-2'}}% </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="incrementalRate">
@@ -25,15 +26,18 @@
 
     <ng-container matColumnDef="maturity">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Maturity </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.maturity | number : '1.2-2'}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.maturity | number : '1.2-2'}}% </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="futureValue">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Future Value </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.futureValue | number : '1.2-2'}} </mat-cell>
+      <mat-cell [ngClass]="td-right" *matCellDef="let row"> {{row.futureValue | number : '1.2-2'}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[3, 6, 9]" showFirstLastButtons></mat-paginator>
+
 </div>

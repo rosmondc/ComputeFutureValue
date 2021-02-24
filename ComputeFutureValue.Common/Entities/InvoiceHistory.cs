@@ -6,9 +6,7 @@ namespace ComputeFutureValue.Common.Entities
     public class InvoiceHistory
     {
         public int Id { get; set; }
-
-
-        [Range(1, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
+        
         [Required, Column(TypeName = "decimal(18, 6)")]
         public decimal PresentValue { get; set; }
 
