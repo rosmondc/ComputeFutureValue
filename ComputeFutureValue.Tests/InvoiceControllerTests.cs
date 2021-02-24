@@ -42,13 +42,14 @@ namespace ComputeFutureValue.Tests
 
             //Assert
             Assert.True(result ==  invoiceViewModel.FutureValue);
+            Assert.True(result > 0);
         }
 
         [Fact]
         public void InvoiceController_Compute_Return_Invalid_FutureValue()
         {
             // Arrange
-            var futureValue = 3217.5M;
+            var futureValue = 0M;
             var invoiceViewModel = new InvoiceViewModel()
             {
                 PresentValue = It.IsAny<decimal>(),
@@ -60,7 +61,7 @@ namespace ComputeFutureValue.Tests
             };
 
             _mockService.Setup(s => s.CalculateFutureAmount(invoiceViewModel)).Returns(futureValue);
-            _mockService.Setup(s => s.SaveInvoiceComputation(invoiceViewModel)).ReturnsAsync(true);
+            _mockService.Setup(s => s.SaveInvoiceComputation(invoiceViewModel)).ReturnsAsync(false);
 
             var controller = new InvoiceController(_mockService.Object);
 
@@ -68,7 +69,7 @@ namespace ComputeFutureValue.Tests
             var result = controller.Compute(invoiceViewModel).Result;
 
             //Assert
-            Assert.True(result > 0);
+            Assert.True(result == 0);
         }
 
         [Fact]
@@ -83,10 +84,10 @@ namespace ComputeFutureValue.Tests
                 UpperBoundInterestRate = It.IsAny<decimal>(),
                 Maturity = It.IsAny<int>(),
                 IncrementalRate = It.IsAny<decimal>(),
-                FutureValue = futureValue
+                FutureValue = It.IsAny<decimal>()
             };
 
-            _mockService.Setup(s => s.CalculateFutureAmount(invoiceViewModel)).Returns(invoiceViewModel.FutureValue);
+            _mockService.Setup(s => s.CalculateFutureAmount(invoiceViewModel)).Returns(futureValue);
             _mockService.Setup(s => s.SaveInvoiceComputation(invoiceViewModel)).ReturnsAsync(false);
 
             var controller = new InvoiceController(_mockService.Object);
