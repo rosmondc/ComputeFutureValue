@@ -23,7 +23,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ComputeFutureValue.Api\ComputeFutureValue.Api.csproj" />
     <ProjectReference Include="..\ComputeFutureValue.Common\ComputeFutureValue.Common.csproj" />
-    <ProjectReference Include="..\ComputeFutureValue\ComputeFutureValue.Api.csproj" />
   </ItemGroup>
 
 </Project>
